@@ -1,0 +1,49 @@
+without stack=>
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        //Scanner sc=new Scanner (System.in);
+        String s="(())";
+        int open=0;
+        int close=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('){
+                open++;
+            }
+        
+        else{
+            close++;
+        }
+        } 
+       if(open==close){
+           System.out.print("true");
+       }
+       else{
+           System.out.print("false");
+       }
+    }
+using stack
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        //Scanner sc=new Scanner (System.in);
+        String s="(()))";
+        Stack<Character>st=new Stack<>();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('){
+                st.push(s.charAt(i));
+            }
+        
+        else{
+            if(!st.isEmpty() && (st.peek()=='(' && s.charAt(i)==')')){
+            st.pop();
+        }
+           else{
+               System.out.print("false");
+        }
+        }
+        } 
+        System.out.println(st.empty());
+    }
+}
