@@ -1,0 +1,42 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int balance=10000;
+        int withdraw;
+        int deposit;
+        int pin=1234;
+        int entered_pin=sc.nextInt();
+        if(entered_pin==pin){
+            System.out.println("Authentication successful. Please select your transaction.");
+            System.out.println("1 for Cash Withdrwal:");
+         System.out.println("2 for Cash diposite:");
+          System.out.println("3 for balance Check:");
+          int choice=sc.nextInt();
+        
+        switch(choice){
+            case 1:
+                System.out.println("enter amount to Cash withdrawl :");
+                withdraw=sc.nextInt();
+                if(balance>=withdraw){
+                    balance-=withdraw;
+                    System.out.println("your current balance is after Cash withdraw :"+balance);
+                }
+                break;
+                case 2:
+                System.out.println("enter amount to Cash deposite :");
+                deposit=sc.nextInt();
+                    balance+=deposit;
+                    System.out.println("your current balance is after Cash Deposite :"+balance);
+                break;
+                case 3:
+                    System.out.println("your current balance is :"+balance);
+                    break;
+                    
+        }
+        }
+        else{
+            System.out.println("Incorrect PIN. Please try again.");
+        }
+    }
+}
