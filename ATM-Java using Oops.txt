@@ -1,0 +1,73 @@
+import java.util.*;
+class Main {
+    public static class Account{
+         public static String user_name;
+    public static int pin;
+    public static double balance;
+   public static List<String>transactionhistroy=new ArrayList<>();
+   public Account(String user_name,int pin,double balance){
+       this.user_name=user_name;
+       this.pin=pin;
+       this.balance=balance;
+   }
+   public static String getUsername(){
+       return user_name;
+   }
+   public static void pinAuthentication(int entered_pin){
+     if(pin==entered_pin){
+         System.out.println("Access Granted! You are logged in.");
+     }
+     else{
+         System.out.print(" Invalid PIN! Access Denied.");
+     }
+   }
+   public static void Readytransaction(int entered_pin){
+       if(pin==entered_pin){
+            System.out.println("Authentication successful. Please select your transaction.");
+            System.out.println("1 for Cash Withdrwal:");
+         System.out.println("2 for Cash diposite:");
+          System.out.println("3 for balance Check:");
+           Scanner sc=new Scanner(System.in);
+           System.out.println("Enter your transaction");
+            int choice=sc.nextInt();
+           switch(choice){
+              case 1:
+                System.out.println("enter amount to Cash withdrawl :");
+                int withdraw=sc.nextInt();
+                if(balance>=withdraw){
+                    balance-=withdraw;
+                    System.out.println("your current balance is after Cash withdraw :"+balance);
+                    transactionhistroy.add("nnvn"+withdraw);
+                }
+                break;
+                case 2:
+                System.out.println("enter amount to Cash deposite :");
+                int deposit=sc.nextInt();
+                    balance+=deposit;
+                    System.out.println("your current balance is after Cash Deposite :"+balance);
+                    transactionhistroy.add("esg"+deposit);
+                break;
+                case 3:
+                    System.out.println("your current balance is :"+balance);
+                    break;
+                 default:
+                        System.out.println("invalid choice.");
+        }
+           }
+   }
+          public static void checkTransactionhistory(List<String>transactionhistory){
+                   System.out.println(transactionhistroy);
+          }
+    }
+   
+    public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      Account acc=new Account("Mohini",1234,10000.0);
+      System.out.println("Username: " + Account.getUsername());
+      System.out.println("Welcome to ATM: ");
+      int entered_pin=sc.nextInt();
+      Account.pinAuthentication(entered_pin);
+      Account.Readytransaction(entered_pin);
+      
+    }
+}
